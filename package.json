@@ -1,0 +1,12 @@
+{
+  "name": "koa-container",
+  "version": "1.0.0",
+  "description": "Use koa as container",
+  "main": "index.js",
+  "repository": "https://github.com/futurechallenger/koa-container.git",
+  "author": "Uncle Charlie",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
+}

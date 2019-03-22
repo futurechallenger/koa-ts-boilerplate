@@ -1,8 +1,13 @@
-export function hello(name: string) :string {
-  console.log(`===>hello ${name || "bro"}`);
-  return `hello ${name || 'bro'}`
-}
+import Koa from "koa";
+import Router from "koa-router";
 
-hello("BBB");
-hello("HHH");
-hello("YYY");
+const app = new Koa();
+const router = new Router();
+
+router.get("/*", async ctx => {
+  ctx.body = "hello world";
+});
+
+app.use(router.routes());
+
+app.listen(55667)

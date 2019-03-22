@@ -7,8 +7,12 @@
   "author": "Uncle Charlie",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec ./node_modules/.bin/babel-node --extensions '.ts,.tsx' index.ts"
-
+    "start": "nodemon --exec ./node_modules/.bin/babel-node --extensions '.ts,.tsx' src/index.ts",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
   },
   "dependencies": {
     "koa": "^2.7.0"
@@ -17,6 +21,8 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-typescript": "^7.3.3",
     "nodemon": "^1.18.10"

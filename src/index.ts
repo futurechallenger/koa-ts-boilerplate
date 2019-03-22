@@ -5,3 +5,4 @@ function hello(name: string) :string {
 
 hello("BBB");
 hello("HHH");
+hello("YYY");

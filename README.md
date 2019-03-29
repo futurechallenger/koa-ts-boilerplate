@@ -1,3 +1,4 @@
-# koa-container
+# Koa Typescript Boilerplate
 
-KOA as interface
+## TODO
+- [ ] Add cli to generate different kinds of builerplates for server development

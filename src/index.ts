@@ -12,17 +12,17 @@ app.use(bodyParser);
  * General params for executing a method in a file
  */
 router.post("/exec", async ctx => {
-  const {request} = ctx
+  const { request } = ctx;
   console.log(request.query);
 
-  const {
-    funcName,
-    params,
-  }=  request.query;
-  
-  ctx.body = "hello world";
+  const { funcName, params } = request.query;
+
+  ctx.body = {
+    fun: funcName,
+    params
+  };
 });
 
 app.use(router.routes());
 
-app.listen(55667)
+app.listen(55667);

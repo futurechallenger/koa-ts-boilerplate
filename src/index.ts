@@ -1,6 +1,6 @@
-import Koa from "koa";
-import Router from "koa-router";
-import BodyParser from "koa-bodyparser";
+import Koa from 'koa';
+import Router from 'koa-router';
+import BodyParser from 'koa-bodyparser';
 
 const app = new Koa();
 const router = new Router();
@@ -8,10 +8,14 @@ const bodyParser = BodyParser();
 
 app.use(bodyParser);
 
+export function hello(name: string) {
+  return `hello ${name || 'Bro'}`;
+}
+
 /**
  * General params for executing a method in a file
  */
-router.post("/exec", async ctx => {
+router.post('/exec', async ctx => {
   const { request } = ctx;
   console.log(request.query);
 
@@ -19,7 +23,7 @@ router.post("/exec", async ctx => {
 
   ctx.body = {
     fun: funcName,
-    params
+    params,
   };
 });
 

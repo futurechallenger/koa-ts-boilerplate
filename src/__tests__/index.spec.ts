@@ -1,5 +1,7 @@
-// import { hello } from "../index";
+import { hello } from '../index';
 
-// it("hello", () => {
-//   expect(hello("kkk")).toEqual("hello kkk");
-// });
+describe('test index file', () => {
+  it('hello', () => {
+    expect(hello('kkk')).toEqual('hello kkk');
+  });
+});

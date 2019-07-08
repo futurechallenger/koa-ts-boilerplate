@@ -44,7 +44,7 @@ func main() {
 	// }
 
 	if checkGit() == false {
-		fmt.Println("Git is not installed!\n")
+		fmt.Println("Git is not installed!")
 		return
 	}
 
@@ -55,4 +55,10 @@ func main() {
 	}
 
 	// TODO: 1. create app directory. 2. copy files into the directory
+	destDir := fmt.Sprintf("%s//%s", currentPath, "my-app")
+	err := os.Mkdir(destDir, os.ModePerm)
+	if err != nil {
+		fmt.Printf("Error in creating destination directory")
+		return
+	}
 }

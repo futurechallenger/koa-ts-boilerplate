@@ -2,39 +2,13 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"runtime"
 )
-
-func checkSystem() bool {
-	fmt.Printf("OS: %s\n", runtime.GOOS)
-	return runtime.GOOS == "windows"
-}
-
-func checkGit() bool {
-	output, err := exec.Command("git", "--version").CombinedOutput()
-	fmt.Printf("Git installed %s", output)
-	return err == nil
-}
-
-func getCurrentPath() string {
-	dir, err := os.Getwd()
-	if err != nil {
-		return ""
-	}
-
-	return dir
-}
-
-// Return true is exists
-func checkDirExists(path string) bool {
-	if _, err := os.Stat(path); !os.IsNotExist(err) {
-		return true
-	}
-
-	return false
-}
 
 func main() {
 	// if checkSystem() == true {
@@ -56,9 +30,17 @@ func main() {
 
 	// TODO: 1. create app directory. 2. copy files into the directory
 	destDir := fmt.Sprintf("%s//%s", currentPath, "my-app")
-	err := os.Mkdir(destDir, os.ModePerm)
-	if err != nil {
-		fmt.Printf("Error in creating destination directory")
+
+	createdOK := createDir(destDir)
+	if createdOK == false {
+		fmt.Println("Create dir error")
 		return
 	}
+
+	// TODO: copy files,
+	// 1. No git files
+	// 2. No cli files
+	// 3. No readme.md (optional)
+	// 4. No node_modules
+	copyDir()
 }

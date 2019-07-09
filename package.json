@@ -13,7 +13,8 @@
     "type-check:watch": "yarn type-check -- --watch",
     "build": "yarn build:types && yarn build:js",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir dist --ignore src/__tests__ --extensions \".ts,.tsx\" --source-maps inline"
+    "build:js": "babel src --out-dir dist --ignore src/__tests__ --extensions \".ts,.tsx\" --source-maps inline",
+    "create-koa-app": "node cli/cli.js"
   },
   "dependencies": {
     "koa": "^2.7.0",

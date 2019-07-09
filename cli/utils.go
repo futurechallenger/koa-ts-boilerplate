@@ -74,6 +74,7 @@ func copyFile(src string, dst string) error {
 	if srcinfo, err = os.Stat(src); err != nil {
 		return err
 	}
+
 	return os.Chmod(dst, srcinfo.Mode())
 }
 
@@ -108,5 +109,6 @@ func copyDir(src string, dst string) error {
 			}
 		}
 	}
+
 	return nil
 }

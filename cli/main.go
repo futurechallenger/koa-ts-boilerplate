@@ -2,12 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"io/ioutil"
-	"os"
-	"os/exec"
-	"path"
-	"runtime"
 )
 
 func main() {
@@ -42,5 +36,5 @@ func main() {
 	// 2. No cli files
 	// 3. No readme.md (optional)
 	// 4. No node_modules
-	copyDir()
+	// copyDir()
 }

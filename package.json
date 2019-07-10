@@ -17,6 +17,7 @@
     "create-koa-app": "node cli/cli.js"
   },
   "dependencies": {
+    "decompress": "^4.2.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",

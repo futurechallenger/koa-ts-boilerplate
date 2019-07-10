@@ -4,3 +4,4 @@ dist/**
 
 /cli/dist/**
 .goreleaser.yml
+go-cli

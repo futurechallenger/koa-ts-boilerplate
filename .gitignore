@@ -5,3 +5,7 @@ dist/**
 /cli/dist/**
 .goreleaser.yml
 go-cli
+go-cli.raw
+koa-ts-boilerplate
+
+yarn-error.log

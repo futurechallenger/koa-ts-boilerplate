@@ -12,6 +12,17 @@ let basePath = process.cwd();
 const FILE_NAME = 'go-cli';
 const DEST_FILE_PREFIX = '.raw';
 
+const handleExit = () => {
+  console.log('Existing...');
+};
+
+const handleError = () => {
+  console.log('Error');
+};
+
+process.on('SIGINT', handleExit);
+process.on('uncaughtException', handleError);
+
 function error(message: string): void {
   console.error(message);
 }
@@ -25,15 +36,22 @@ const download = (uri: string, callback: (destPath: string) => () => void) => {
   });
 };
 
-download(uri, (destPath: string) => () => {
-  fs.access(path.join(basePath, FILE_NAME), fs.constants.F_OK, err => {
-    if (!err) {
-      fs.unlink(path.join(destPath, FILE_NAME), err => {
-        console.error('Existing files does not removed');
-      });
-    }
-    decompress(destPath, basePath).then(files =>
-      console.log('decompressed file: ', files),
-    );
-  });
-});
+// download(uri, (destPath: string) => () => {
+//   fs.access(path.join(basePath, FILE_NAME), fs.constants.F_OK, err => {
+//     if (!err) {
+//       fs.unlink(path.join(destPath, FILE_NAME), err => {
+//         console.error("Existing files does not removed");
+//       });
+//     }
+//     decompress(destPath, basePath).then(files =>
+//       console.log("decompressed file: ", files)
+//     );
+//   });
+// });
+
+const args = process.argv.slice(2);
+console.log('===>args', args);
+if (args && args.length === 0) {
+  console.error('Please input your app name!');
+  return;
+}

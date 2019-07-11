@@ -1,27 +1,27 @@
 #!/usr/bin/env node
-import Request from "request";
-import process from "process";
-import fs from "fs";
-import path from "path";
-import decompress from "decompress";
-import { FILE } from "dns";
+import Request from 'request';
+import process from 'process';
+import fs from 'fs';
+import path from 'path';
+import decompress from 'decompress';
+import { FILE } from 'dns';
 
 const uri =
-  "https://github.com/futurechallenger/koa-ts-boilerplate/releases/download/v1.0.3/koa-ts-boilerplate_1.0.3_Darwin_x86_64.tar.gz";
+  'https://github.com/futurechallenger/koa-ts-boilerplate/releases/download/v1.0.3/koa-ts-boilerplate_1.0.3_Darwin_x86_64.tar.gz';
 let basePath = process.cwd();
-const FILE_NAME = "go-cli";
-const DEST_FILE_PREFIX = ".raw";
+const FILE_NAME = 'go-cli';
+const DEST_FILE_PREFIX = '.raw';
 
 const handleExit = () => {
-  console.log("Existing...");
+  console.log('Existing...');
 };
 
 const handleError = () => {
-  console.log("Error");
+  console.log('Error');
 };
 
-process.on("SIGINT", handleExit);
-process.on("uncaughtException", handleError);
+process.on('SIGINT', handleExit);
+process.on('uncaughtException', handleError);
 
 function error(message: string): void {
   console.error(message);
@@ -31,8 +31,8 @@ const download = (uri: string, callback: (destPath: string) => () => void) => {
   const destPath = path.join(basePath, `${FILE_NAME}${DEST_FILE_PREFIX}`);
   Request.head(uri, (err, res, body) => {
     const r = Request(uri).pipe(fs.createWriteStream(destPath));
-    r.on("close", callback(destPath));
-    r.on("error", error);
+    r.on('close', callback(destPath));
+    r.on('error', error);
   });
 };
 
@@ -50,4 +50,8 @@ const download = (uri: string, callback: (destPath: string) => () => void) => {
 // });
 
 const args = process.argv.slice(2);
-console.log("===>args", args);
+console.log('===>args', args);
+if (args && args.length === 0) {
+  console.error('Please input your app name!');
+  return;
+}

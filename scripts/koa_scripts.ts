@@ -57,4 +57,5 @@ if (!args || args.length === 0) {
   //TODO: Create default js koa app, which is not supported
   console.log('Will create the typescript version, js version will be supported later');
 } else {
+  console.log('Will create koa app in typescript');
 }

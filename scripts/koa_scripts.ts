@@ -53,8 +53,12 @@ const args = process.argv.slice(2);
 console.log('===>args', args);
 if (!args || args.length === 0) {
   console.error('Please input your app name!');
-} else if (args.length === 1) {
+  return;
+}
+
+const lang = args[0].substring(2);
+if (lang === 'typescript') {
   //TODO: Create default js koa app, which is not supported
   console.log('Will create the typescript version, js version will be supported later');
-} else {
+} else if (lang === 'javascript') {
 }

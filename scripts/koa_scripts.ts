@@ -5,6 +5,14 @@ import fs from 'fs';
 import path from 'path';
 import decompress from 'decompress';
 import { FILE } from 'dns';
+import { execSync } from 'child_process';
+
+/**
+ * TODO:
+ * Copy to dest dir
+ * Execute yarn
+ * Different kinds of reminders in console
+ */
 
 const uri =
   'https://github.com/futurechallenger/koa-ts-boilerplate/releases/download/v1.0.3/koa-ts-boilerplate_1.0.3_Darwin_x86_64.tar.gz';
@@ -63,7 +71,12 @@ function handleArguments() {
     //TODO: Create default js koa app, which is not supported
     console.log('Will create the typescript version, js version will be supported later');
   } else if (lang === 'javascript') {
+    console.log('Javascript is not supported yet');
   }
 }
 
 handleArguments();
+
+// TODO: execute the downloaded code
+let output = execSync('pwd');
+console.log('command line output: ', output.toString());

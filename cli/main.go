@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// TODO: handle arguments here
 func main() {
 	// if checkSystem() == true {
 	// 	// Handle windows stuff
